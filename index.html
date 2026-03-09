@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earth SMP Store</title>
+
+<style>
+body{
+background:url("https://i.imgur.com/JiWFbl8.jpeg") no-repeat center center fixed;
+background-size:cover;
+font-family:Arial;
+margin:0;
+padding:20px;
+color:white;
+}
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.45);
+z-index:-1;
+}
+
+.logo{
+display:block;
+margin:auto;
+width:140px;
+margin-bottom:10px;
+}
+
+.title{
+text-align:center;
+font-size:35px;
+font-weight:bold;
+color:#ff8800;
+margin-bottom:10px;
+text-shadow:0 0 10px #ff6600;
+}
+
+.server-info {
+text-align: center;
+margin-bottom: 20px;
+color: white;
+}
+
+.server-info p {
+margin: 5px 0;
+font-weight: bold;
+font-size: 18px;
+}
+
+.btn-contact {
+display: inline-block;
+margin-top: 15px;
+background: linear-gradient(45deg, #ff8800, #ff4400);
+color: #fff;
+padding: 12px 25px;
+text-decoration: none;
+border-radius: 8px;
+font-weight: bold;
+box-shadow: 0 0 15px rgba(255, 136, 0, 0.4);
+transition: 0.3s;
+}
+
+.btn-contact:hover {
+transform: scale(1.05);
+}
+
+.shop{
+max-width:500px;
+margin:auto;
+margin-top: 30px;
+}
+
+.card{
+background:rgba(20,20,20,0.8);
+backdrop-filter:blur(10px);
+padding:20px;
+border-radius:12px;
+margin-bottom:20px;
+box-shadow:0 0 15px rgba(0,0,0,0.6);
+border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* --- HEADER RANK DENGAN LOGO --- */
+.rank-header {
+display: flex;
+align-items: center;
+gap: 15px;
+margin-bottom: 10px;
+}
+
+.rank-logo {
+width: 50px;
+height: 50px;
+background: rgba(255,255,255,0.1);
+border: 1px solid rgba(255,255,255,0.2);
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+}
+
+.rank-logo img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.rank-header h2 {
+margin: 0;
+font-size: 24px;
+}
+
+/* warna rank */
+.vip{color:#00ff95;}
+.mvp{color:#00d0ff;}
+.elite{color:#ff9d00;}
+.legend{color:#ff4444;}
+.sultan{color:#c77dff;}
+.supreme{color:#ffd700;}
+
+.btn-container {
+display: flex;
+gap: 10px;
+margin-top: 15px;
+}
+
+.btn-base {
+flex: 1;
+padding: 12px 5px;
+border: none;
+border-radius: 8px;
+font-weight: bold;
+cursor: pointer;
+transition: 0.3s;
+font-size: 11px;
+background: linear-gradient(45deg, #ffd700, #ff8800);
+color: #111;
+box-shadow: 0 0 10px rgba(255, 170, 0, 0.4);
+text-align: center;
+text-decoration: none;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.btn-base:hover {
+transform: scale(1.05);
+opacity: 0.9;
+}
+
+.feature-list {
+display: none;
+margin-top: 15px;
+padding: 15px;
+background: rgba(255, 255, 255, 0.05);
+border-radius: 8px;
+font-size: 13px;
+border-left: 3px solid #ff8800;
+animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.feature-list h4 {
+margin: 10px 0 5px 0;
+color: #ff8800;
+font-size: 14px;
+text-transform: uppercase;
+}
+
+.feature-list ul {
+margin: 0;
+padding-left: 15px;
+list-style-type: "➥ ";
+}
+
+.feature-list li {
+margin-bottom: 3px;
+}
+
+.price-old{
+text-decoration:line-through;
+color:#ccc;
+margin-right:5px;
+font-size: 16px;
+}
+
+.price-new{
+color:#00ff95;
+font-weight:bold;
+font-size: 20px;
+}
+
+/* --- FOOTER RAPI --- */
+.footer-section {
+background: linear-gradient(180deg, rgba(255, 136, 0, 0.9), rgba(180, 80, 0, 1));
+margin: 40px -20px -20px -20px;
+padding: 40px 20px;
+text-align: center;
+color: #ffffff;
+}
+
+.footer-content {
+max-width: 600px;
+margin: auto;
+}
+
+.social-links {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 10px;
+padding: 0;
+list-style: none;
+margin-top: 15px;
+}
+
+.social-links li {
+margin-bottom: 5px;
+}
+
+.social-links a {
+color: white;
+text-decoration: none;
+font-weight: bold;
+background: rgba(0,0,0,0.2);
+padding: 10px 15px;
+border-radius: 8px;
+display: block;
+transition: 0.3s;
+min-width: 120px;
+}
+
+.social-links a:hover {
+background: rgba(255,255,255,0.2);
+transform: translateY(-3px);
+}
+
+.copyright {
+margin-top: 30px;
+font-size: 13px;
+opacity: 0.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<img class="logo" src="https://i.imgur.com/b4XQ7V9.jpeg">
+<div class="title">EARTH SMP STORE</div>
+
+<div class="server-info">
+    <p>IP : basic-2.mineidhost.icu:19149</p>
+    <p>PORT : 19149</p>
+    <a href="https://wa.me/6281901841878" class="btn-contact" target="_blank">
+        💬 [KONTAK ADMIN]
+    </a>
+</div>
+
+<div class="shop">
+
+    <div class="card">
+        <div class="rank-header">
+            <div class="rank-logo">
+                <img src="https://i.imgur.com/BUAA0Bs.jpeg" alt="">
+            </div>
+            <h2 class="vip">VIP - <span class="price-old">25k</span><span class="price-new">12k</span></h2>
+        </div>
+        <div class="btn-container">
+            <a href="https://wa.me/6281901841878?text=Beli%20VIP" class="btn-base" target="_blank">BELI SEKARANG</a>
+            <button class="btn-base" onclick="toggleFeature('feat-vip')">FITUR RANK</button>
+        </div>
+        <div id="feat-vip" class="feature-list">
+            <h4>Rank Permission</h4>
+            <ul>
+                <li>3x Limit Claim</li>
+                <li>5.000 Limit Block</li>
+                <li>5x Sethome</li>
+            </ul>
+            <h4>Rank Feature</h4>
+            <ul>
+                <li>/clan create Command</li>
+                <li>/repair Command</li>
+                <li>/food Command</li>
+                <li>/heal Command</li>
+                <li>/kit vip</li>
+                <li>Money Rp25.000</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="rank-header">
+            <div class="rank-logo">
+                <img src="https://i.imgur.com/0xU9atU.jpeg" alt="">
+            </div>
+            <h2 class="mvp">MVP - <span class="price-old">50k</span><span class="price-new">25k</span></h2>
+        </div>
+        <div class="btn-container">
+            <a href="https://wa.me/6281901841878?text=Beli%20MVP" class="btn-base" target="_blank">BELI SEKARANG</a>
+            <button class="btn-base" onclick="toggleFeature('feat-mvp')">FITUR RANK</button>
+        </div>
+        <div id="feat-mvp" class="feature-list">
+            <h4>Rank Permission</h4>
+            <ul>
+                <li>5x Limit Claim</li>
+                <li>8.000 Limit Block</li>
+                <li>10x Sethome</li>
+            </ul>
+            <h4>Rank Feature</h4>
+            <ul>
+                <li>/ec (Enderchest) Command</li>
+                <li>/feed Command</li>
+                <li>/nick Command</li>
+                <li>/kit mvp</li>
+                <li>Termasuk fitur VIP</li>
+                <li>Money Rp40.000</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="rank-header">
+            <div class="rank-logo">
+                <img src="https://i.imgur.com/d65B0jp.jpeg" alt="">
+            </div>
+            <h2 class="elite">ELITE - <span class="price-old">80k</span><span class="price-new">40k</span></h2>
+        </div>
+        <div class="btn-container">
+            <a href="https://wa.me/6281901841878?text=Beli%20ELITE" class="btn-base" target="_blank">BELI SEKARANG</a>
+            <button class="btn-base" onclick="toggleFeature('feat-elite')">FITUR RANK</button>
+        </div>
+        <div id="feat-elite" class="feature-list">
+            <h4>Rank Permission</h4>
+            <ul>
+                <li>8x Limit Claim</li>
+                <li>10.000 Limit Block</li>
+                <li>15x Sethome</li>
+            </ul>
+            <h4>Rank Feature</h4>
+            <ul>
+                <li>/ec (Enderchest) Command</li>
+                <li>/fly Command</li>
+                <li>/nick Command</li>
+                <li>/repair Command</li>
+                <li>/feed Command</li>
+                <li>/kit elite</li>
+                <li>Termasuk fitur MVP</li>
+                <li>Money Rp70.000</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="rank-header">
+            <div class="rank-logo">
+                <img src="https://i.imgur.com/cOikmJ5.jpeg" alt="">
+            </div>
+            <h2 class="legend">LEGEND - <span class="price-old">125k</span><span class="price-new">60k</span></h2>
+        </div>
+        <div class="btn-container">
+            <a href="https://wa.me/6281901841878?text=Beli%20LEGEND" class="btn-base" target="_blank">BELI SEKARANG</a>
+            <button class="btn-base" onclick="toggleFeature('feat-legend')">FITUR RANK</button>
+        </div>
+        <div id="feat-legend" class="feature-list">
+            <h4>Rank Permission</h4>
+            <ul>
+                <li>10x Limit Claim</li>
+                <li>20.000 Limit Block</li>
+                <li>25x Sethome</li>
+            </ul>
+            <h4>Rank Feature</h4>
+            <ul>
+                <li>/ec (Enderchest) Command</li>
+                <li>/fly Command</li>
+                <li>/nick Command</li>
+                <li>/repair Command</li>
+                <li>/kit legend</li>
+                <li>Termasuk fitur Elite</li>
+                <li>Money Rp250.000</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="rank-header">
+            <div class="rank-logo">
+                <img src="https://i.imgur.com/srZAt5S.jpeg" alt="">
+            </div>
+            <h2 class="sultan">SULTAN - <span class="price-old">150k</span><span class="price-new">70k</span></h2>
+        </div>
+        <div class="btn-container">
+            <a href="https://wa.me/6281901841878?text=Beli%20SULTAN" class="btn-base" target="_blank">BELI SEKARANG</a>
+            <button class="btn-base" onclick="toggleFeature('feat-sultan')">FITUR RANK</button>
+        </div>
+        <div id="feat-sultan" class="feature-list">
+            <h4>Rank Permission</h4>
+            <ul>
+                <li>20x Limit Claim</li>
+                <li>30.000 Limit Block</li>
+                <li>50x Sethome</li>
+            </ul>
+            <h4>Rank Feature</h4>
+            <ul>
+                <li>/ec Command</li>
+                <li>/beezooka Command</li>
+                <li>/feed & /fly Command</li>
+                <li>/nick & /repair Command</li>
+                <li>/heal Command</li>
+                <li>/kit sultan</li>
+                <li>Termasuk fitur Legend</li>
+                <li>Money Rp350.000</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="rank-header">
+            <div class="rank-logo">
+                <img src="https://i.imgur.com/pCfhlTQ.jpeg" alt="">
+            </div>
+            <h2 class="supreme">SUPREME - <span class="price-old">300k</span><span class="price-new">150k</span></h2>
+        </div>
+        <div class="btn-container">
+            <a href="https://wa.me/6281901841878?text=Beli%20SUPREME" class="btn-base" target="_blank">BELI SEKARANG</a>
+            <button class="btn-base" onclick="toggleFeature('feat-supreme')">FITUR RANK</button>
+        </div>
+        <div id="feat-supreme" class="feature-list">
+            <h4>Rank Permission</h4>
+            <ul>
+                <li>∞ Limit Claim</li>
+                <li>∞ Limit Block</li>
+                <li>999 Sethome</li>
+            </ul>
+            <h4>Rank Feature</h4>
+            <ul>
+                <li>/ec, /feed, /fly Command</li>
+                <li>/repair & /nick Command</li>
+                <li>/heal & /craft Command</li>
+                <li>/head & /beezooka Command</li>
+                <li>/kit supreme</li>
+                <li>Termasuk fitur Sultan</li>
+                <li>Money Rp700.000</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer-section">
+    <div class="footer-content">
+        <h2>Earth SMP</h2>
+        <p>Earth SMP adalah server Minecraft Survival RPG dengan senjata legend. Mari berkreasi dan bersaing!</p>
+        
+        <h3 style="margin-top:20px;">Media Sosial</h3>
+        <ul class="social-links">
+            <li><a href="https://chat.whatsapp.com/Cb4UqCGpoQgDrUdzTLQMfu?mode=hqctcla" target="_blank">💬 WhatsApp Group</a></li>
+            <li><a href="https://www.tiktok.com/@adminearthsmp?_r=1&_t=ZS-94XgD1EU2at" target="_blank">📱 TikTok</a></li>
+            <li><a href="https://discord.gg/zmX3f94w6" target="_blank">🎮 Discord Server</a></li>
+        </ul>
+
+        <hr style="border:0; border-top:1px solid rgba(255,255,255,0.2); margin:30px 0;">
+        <div class="copyright">© 2025 - 2026 Earth SMP. All rights reserved.</div>
+    </div>
+</div>
+
+<script>
+function toggleFeature(id) {
+    var x = document.getElementById(id);
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>
