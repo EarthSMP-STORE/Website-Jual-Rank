@@ -1,399 +1,117 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Earth SMP Store | Official Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masa Aktif Habis | ReyzaDeveloperStore</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
 
-<style>
-body {
-    background: url("https://i.imgur.com/JiWFbl8.jpeg") no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    color: white;
-    line-height: 1.6;
-}
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.55);
-    z-index: -1;
-}
+        .container {
+            text-align: center;
+            background: white;
+            padding: 60px 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            max-width: 450px;
+            width: 90%;
+            border-top: 8px solid #e74c3c;
+        }
 
-/* --- TOMBOL MUSIK --- */
-.music-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background: rgba(20,20,20,0.9);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.2);
-    border-radius: 12px;
-    cursor: pointer;
-    z-index: 3000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    transition: 0.3s;
-}
+        .icon {
+            font-size: 70px;
+            margin-bottom: 20px;
+            display: block;
+        }
 
-.music-toggle:hover { border-color: #ff8800; transform: scale(1.1); }
-.music-toggle img { width: 28px; height: 28px; }
+        h1 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: 800;
+        }
 
-/* --- JOIN CONTAINER (JAVA & MCPE) --- */
-.join-container {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    max-width: 550px;
-    margin: 25px auto;
-}
+        p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #636e72;
+            margin-bottom: 35px;
+        }
 
-.join-box {
-    flex: 1;
-    background: rgba(25,25,25,0.85);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 15px;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.3s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background-color: #25d366; /* Warna WhatsApp */
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 16px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            text-transform: uppercase;
+        }
 
-.join-box:hover {
-    background: rgba(255, 136, 0, 0.15);
-    border-color: #ff8800;
-    transform: translateY(-5px);
-}
+        .btn:hover {
+            background-color: #1ebd5b;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4);
+        }
 
-.join-box img { width: 45px; height: 45px; margin-bottom: 10px; }
-.join-box b { font-size: 15px; color: #ff8800; letter-spacing: 1px; }
-.join-box span { font-size: 11px; opacity: 0.7; margin-top: 5px; }
+        .btn:active {
+            transform: translateY(0);
+        }
 
-/* --- TOAST NOTIFICATION --- */
-.toast {
-    visibility: hidden;
-    min-width: 280px;
-    background: #ff8800;
-    color: #fff;
-    text-align: left;
-    border-radius: 10px;
-    padding: 18px;
-    position: fixed;
-    z-index: 4000;
-    right: 20px;
-    top: 85px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border-left: 6px solid #fff;
-    font-weight: bold;
-}
+        .footer {
+            margin-top: 40px;
+            font-size: 13px;
+            color: #b2bec3;
+            font-weight: 500;
+        }
 
-.toast.show {
-    visibility: visible;
-    animation: slideIn 0.5s, slideOut 0.5s 2.5s;
-}
+        /* Efek Muncul Pelan */
+        .container {
+            animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-@keyframes slideIn { from { right: -350px; opacity: 0; } to { right: 20px; opacity: 1; } }
-@keyframes slideOut { from { right: 20px; opacity: 1; } to { right: -350px; opacity: 0; } }
-
-/* --- HEADER & LOGO --- */
-.logo { display: block; margin: auto; width: 150px; filter: drop-shadow(0 0 10px rgba(255,136,0,0.5)); }
-.title { text-align: center; font-size: 38px; font-weight: 900; color: #ff8800; text-shadow: 0 0 15px #ff6600; margin: 15px 0; }
-
-.btn-contact {
-    display: block;
-    width: fit-content;
-    margin: 0 auto 30px;
-    background: linear-gradient(45deg, #ff8800, #ff4400);
-    color: #fff;
-    padding: 14px 30px;
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: bold;
-    box-shadow: 0 5px 20px rgba(255, 136, 0, 0.4);
-    transition: 0.3s;
-}
-.btn-contact:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(255, 136, 0, 0.6); }
-
-/* --- SHOP CARDS --- */
-.shop { max-width: 550px; margin: auto; }
-.card {
-    background: rgba(20,20,20,0.85);
-    backdrop-filter: blur(12px);
-    padding: 25px;
-    border-radius: 18px;
-    margin-bottom: 25px;
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-.rank-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
-.rank-logo { width: 55px; height: 55px; border-radius: 10px; overflow: hidden; border: 2px solid rgba(255,255,255,0.15); }
-.rank-logo img { width: 100%; height: 100%; object-fit: cover; }
-
-.rank-header h2 { margin: 0; font-size: 26px; }
-.vip{color:#00ff95;} .mvp{color:#00d0ff;} .elite{color:#ff9d00;} 
-.legend{color:#ff4444;} .sultan{color:#c77dff;} .supreme{color:#ffd700;}
-
-.btn-container { display: flex; gap: 12px; margin-top: 20px; }
-.btn-base {
-    flex: 1; padding: 14px; border: none; border-radius: 10px; font-weight: bold;
-    cursor: pointer; transition: 0.3s; font-size: 12px;
-    background: linear-gradient(45deg, #ffd700, #ff8800); color: #111;
-    display: flex; align-items: center; justify-content: center;
-    text-transform: uppercase; letter-spacing: 1px;
-}
-.btn-base:hover { transform: translateY(-3px); filter: brightness(1.1); }
-
-/* --- DETAIL FITUR --- */
-.feature-list {
-    display: none; margin-top: 20px; padding: 20px; 
-    background: rgba(255, 255, 255, 0.05); border-radius: 12px;
-    font-size: 14px; border-left: 4px solid #ff8800;
-    animation: fadeIn 0.4s ease;
-}
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-.feature-list h4 { margin: 15px 0 8px 0; color: #ff8800; font-size: 15px; text-transform: uppercase; border-bottom: 1px solid rgba(255,136,0,0.3); display: inline-block; }
-.feature-list ul { margin: 0; padding-left: 20px; list-style-type: "◈ "; }
-.feature-list li { margin-bottom: 5px; color: #eee; }
-
-.price-old { text-decoration: line-through; color: #aaa; font-size: 16px; margin-right: 8px; }
-.price-new { color: #00ff95; font-weight: 800; font-size: 22px; text-shadow: 0 0 10px rgba(0,255,149,0.3); }
-
-/* --- FOOTER --- */
-.footer-section {
-    background: linear-gradient(180deg, rgba(255, 136, 0, 0.95), rgba(180, 80, 0, 1));
-    margin: 50px -20px -20px -20px; padding: 50px 20px; text-align: center;
-}
-.social-links { display: flex; justify-content: center; gap: 15px; list-style: none; padding: 0; margin-top: 25px; }
-.social-links a { color: white; text-decoration: none; font-weight: bold; background: rgba(0,0,0,0.25); padding: 12px 20px; border-radius: 10px; transition: 0.3s; }
-.social-links a:hover { background: #fff; color: #ff8800; }
-
-</style>
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
-
 <body>
 
-<audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
-<audio id="clickSound">
-    <source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" type="audio/mpeg">
-</audio>
-
-<div class="music-toggle" onclick="toggleMusic()">
-    <img id="musicIcon" src="https://img.icons8.com/ios-filled/50/ffffff/mute--v1.png" alt="Music Off">
-</div>
-
-<div id="copyToast" class="toast">
-    ✅ IP TELAH DISALIN!<br>
-    <span style="font-size:12px; font-weight:normal; opacity:0.9;">Silahkan masuk ke Minecraft dan paste IP Server.</span>
-</div>
-
-<img class="logo" src="https://i.imgur.com/b4XQ7V9.jpeg">
-<div class="title">EARTH SMP STORE</div>
-
-<div class="server-info">
-    <div class="join-container">
-        <div class="join-box" onclick="copyJavaIP()">
-            <img src="https://i.imgur.com/DtNxzOi.jpeg" alt="Java">
-            <b>JOIN JAVA</b>
-            <span>Klik untuk Salin IP</span>
-        </div>
-
-        <a href="minecraft://?addExternalServer=Earth%20SMP|earthsmp.my.id:19149" class="join-box" onclick="playClick()">
-            <img src="https://i.imgur.com/J2heZ0M.jpeg" alt="MCPE">
-            <b>JOIN MCPE</b>
-            <span>Otomatis Masuk Game</span>
+    <div class="container">
+        <span class="icon">⚠️</span>
+        <h1>Masa Aktif Habis</h1>
+        <p>
+            Layanan website ini telah mencapai batas masa aktif. Mohon lakukan pembayaran untuk mengaktifkan kembali seluruh fitur dan akses layanan Anda.
+        </p>
+        
+        <a href="https://wa.me/6283871369427?text=Saya%20ingin%20memperpanjang%20masa%20aktif%20website" target="_blank" class="btn">
+            BAYAR SEKARANG
         </a>
-    </div>
-    <a href="https://wa.me/6281901841878" class="btn-contact" target="_blank" onclick="playClick()">💬 HUBUNGI ADMIN (WHATSAPP)</a>
-</div>
 
-<div class="shop">
-
-    <div class="card">
-        <div class="rank-header">
-            <div class="rank-logo"><img src="https://i.imgur.com/BUAA0Bs.jpeg"></div>
-            <h2 class="vip">VIP - <span class="price-old">25k</span><span class="price-new">12k</span></h2>
-        </div>
-        <div class="btn-container">
-            <a href="https://wa.me/6281901841878?text=Min%20saya%20mau%20beli%20Rank%20VIP" class="btn-base" target="_blank" onclick="playClick()">BELI SEKARANG</a>
-            <button class="btn-base" onclick="toggleFeature('feat-vip')">LIHAT FITUR</button>
-        </div>
-        <div id="feat-vip" class="feature-list">
-            <h4>Rank Permission</h4>
-            <ul><li>3x Limit Claim</li><li>5.000 Limit Block</li><li>5x Limit Sethome</li></ul>
-            <h4>Rank Commands & Kits</h4>
-            <ul><li>/clan create Command</li><li>/repair Command</li><li>/food Command</li><li>/heal Command</li><li>/kit vip</li><li>Uang Tunai Rp25.000</li></ul>
+        <div class="footer">
+            &copy; 2026 **ReyzaDeveloperStore**. All Rights Reserved.
         </div>
     </div>
-
-    <div class="card">
-        <div class="rank-header">
-            <div class="rank-logo"><img src="https://i.imgur.com/0xU9atU.jpeg"></div>
-            <h2 class="mvp">MVP - <span class="price-old">50k</span><span class="price-new">25k</span></h2>
-        </div>
-        <div class="btn-container">
-            <a href="https://wa.me/6281901841878?text=Min%20saya%20mau%20beli%20Rank%20MVP" class="btn-base" target="_blank" onclick="playClick()">BELI SEKARANG</a>
-            <button class="btn-base" onclick="toggleFeature('feat-mvp')">LIHAT FITUR</button>
-        </div>
-        <div id="feat-mvp" class="feature-list">
-            <h4>Rank Permission</h4>
-            <ul><li>5x Limit Claim</li><li>8.000 Limit Block</li><li>10x Limit Sethome</li></ul>
-            <h4>Rank Commands & Kits</h4>
-            <ul><li>/ec (Enderchest) Command</li><li>/feed Command</li><li>/nick Command</li><li>/kit mvp</li><li>Mendapatkan semua fitur VIP</li><li>Uang Tunai Rp40.000</li></ul>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="rank-header">
-            <div class="rank-logo"><img src="https://i.imgur.com/d65B0jp.jpeg"></div>
-            <h2 class="elite">ELITE - <span class="price-old">80k</span><span class="price-new">40k</span></h2>
-        </div>
-        <div class="btn-container">
-            <a href="https://wa.me/6281901841878?text=Min%20saya%20mau%20beli%20Rank%20ELITE" class="btn-base" target="_blank" onclick="playClick()">BELI SEKARANG</a>
-            <button class="btn-base" onclick="toggleFeature('feat-elite')">LIHAT FITUR</button>
-        </div>
-        <div id="feat-elite" class="feature-list">
-            <h4>Rank Permission</h4>
-            <ul><li>8x Limit Claim</li><li>10.000 Limit Block</li><li>15x Limit Sethome</li></ul>
-            <h4>Rank Commands & Kits</h4>
-            <ul><li>/fly Command (Terbang)</li><li>/repair All Command</li><li>/ec, /nick, /feed Command</li><li>/kit elite</li><li>Mendapatkan semua fitur MVP</li><li>Uang Tunai Rp70.000</li></ul>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="rank-header">
-            <div class="rank-logo"><img src="https://i.imgur.com/cOikmJ5.jpeg"></div>
-            <h2 class="legend">LEGEND - <span class="price-old">125k</span><span class="price-new">60k</span></h2>
-        </div>
-        <div class="btn-container">
-            <a href="https://wa.me/6281901841878?text=Min%20saya%20mau%20beli%20Rank%20LEGEND" class="btn-base" target="_blank" onclick="playClick()">BELI SEKARANG</a>
-            <button class="btn-base" onclick="toggleFeature('feat-legend')">LIHAT FITUR</button>
-        </div>
-        <div id="feat-legend" class="feature-list">
-            <h4>Rank Permission</h4>
-            <ul><li>10x Limit Claim</li><li>20.000 Limit Block</li><li>25x Limit Sethome</li></ul>
-            <h4>Rank Commands & Kits</h4>
-            <ul><li>/fly, /ec, /nick, /repair Command</li><li>/kit legend</li><li>Mendapatkan semua fitur ELITE</li><li>Uang Tunai Rp250.000</li></ul>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="rank-header">
-            <div class="rank-logo"><img src="https://i.imgur.com/srZAt5S.jpeg"></div>
-            <h2 class="sultan">SULTAN - <span class="price-old">150k</span><span class="price-new">70k</span></h2>
-        </div>
-        <div class="btn-container">
-            <a href="https://wa.me/6281901841878?text=Min%20saya%20mau%20beli%20Rank%20SULTAN" class="btn-base" target="_blank" onclick="playClick()">BELI SEKARANG</a>
-            <button class="btn-base" onclick="toggleFeature('feat-sultan')">LIHAT FITUR</button>
-        </div>
-        <div id="feat-sultan" class="feature-list">
-            <h4>Rank Permission</h4>
-            <ul><li>20x Limit Claim</li><li>30.000 Limit Block</li><li>50x Limit Sethome</li></ul>
-            <h4>Rank Commands & Kits</h4>
-            <ul><li>/beezooka Command</li><li>/heal & /feed Command</li><li>/fly, /ec, /nick, /repair Command</li><li>/kit sultan</li><li>Mendapatkan semua fitur LEGEND</li><li>Uang Tunai Rp350.000</li></ul>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="rank-header">
-            <div class="rank-logo"><img src="https://i.imgur.com/pCfhlTQ.jpeg"></div>
-            <h2 class="supreme">SUPREME - <span class="price-old">300k</span><span class="price-new">150k</span></h2>
-        </div>
-        <div class="btn-container">
-            <a href="https://wa.me/6281901841878?text=Min%20saya%20mau%20beli%20Rank%20SUPREME" class="btn-base" target="_blank" onclick="playClick()">BELI SEKARANG</a>
-            <button class="btn-base" onclick="toggleFeature('feat-supreme')">LIHAT FITUR</button>
-        </div>
-        <div id="feat-supreme" class="feature-list">
-            <h4>Rank Permission</h4>
-            <ul><li>Tak Terbatas Limit Claim (Unlimited)</li><li>Tak Terbatas Limit Block</li><li>999x Limit Sethome</li></ul>
-            <h4>Rank Commands & Kits</h4>
-            <ul><li>/craft & /head Command</li><li>/beezooka, /heal, /fly Command</li><li>/ec, /nick, /repair Command</li><li>/kit supreme</li><li>Mendapatkan semua fitur SULTAN</li><li>Uang Tunai Rp700.000</li></ul>
-        </div>
-    </div>
-
-</div>
-
-<div class="footer-section">
-    <h2 style="color:white; margin:0;">Earth SMP</h2>
-    <p style="color:white; opacity:0.8; font-size:14px; margin-top:10px;">Jelajahi petualangan tanpa batas di server kami.</p>
-    <ul class="social-links">
-        <li><a href="https://chat.whatsapp.com/Cb4UqCGpoQgDrUdzTLQMfu" target="_blank" onclick="playClick()">WHATSAPP</a></li>
-        <li><a href="https://www.tiktok.com/@adminearthsmp" target="_blank" onclick="playClick()">TIKTOK</a></li>
-        <li><a href="https://discord.gg/zmX3f94w6" target="_blank" onclick="playClick()">DISCORD</a></li>
-    </ul>
-    <div style="margin-top:40px; font-size:12px; opacity:0.7; color:white;">© 2025 Earth SMP Server. Seluruh hak cipta dilindungi.</div>
-</div>
-
-<script>
-var music = document.getElementById("bgMusic");
-var musicIcon = document.getElementById("musicIcon");
-var isPlaying = false;
-
-function playClick() {
-    var sound = document.getElementById("clickSound");
-    sound.currentTime = 0;
-    sound.play();
-}
-
-// AUTO-PLAY PADA KLIK PERTAMA
-document.body.addEventListener('click', function() {
-    if (!isPlaying) {
-        music.play();
-        isPlaying = true;
-        musicIcon.src = "https://img.icons8.com/ios-filled/50/ffffff/high-volume.png";
-    }
-}, { once: true });
-
-function toggleMusic() {
-    playClick();
-    if (isPlaying) {
-        music.pause();
-        musicIcon.src = "https://img.icons8.com/ios-filled/50/ffffff/mute--v1.png";
-    } else {
-        music.play();
-        musicIcon.src = "https://img.icons8.com/ios-filled/50/ffffff/high-volume.png";
-    }
-    isPlaying = !isPlaying;
-}
-
-function toggleFeature(id) {
-    playClick();
-    var x = document.getElementById(id);
-    if (x.style.display === "block") {
-        x.style.display = "none";
-    } else {
-        x.style.display = "block";
-    }
-}
-
-function copyJavaIP() {
-    playClick();
-    const ip = "earthsmp.my.id:19149";
-    navigator.clipboard.writeText(ip).then(() => {
-        var toast = document.getElementById("copyToast");
-        toast.className = "toast show";
-        setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
-    });
-}
-</script>
 
 </body>
 </html>
